@@ -18,7 +18,7 @@
 
 
 SetWorkingDir, %A_ScriptDir%
-logFile = %A_ScriptName%-log.txt
+logFile = %A_Temp%\%A_ScriptName%-log.txt
 FileAppend, %A_ScriptName% started at %A_NOW%`n, %logFile%
 
 ;;	FileAppend, %A_ScriptName% did its thing at %A_NOW%`n, %logFile%
