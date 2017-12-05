@@ -17,10 +17,10 @@
 
 SetWorkingDir, %A_ScriptDir%
 logFile = %A_Temp%\%A_ScriptName%-log.txt
-FileAppend, %A_ScriptName% started at %A_NOW%`n, %logFile%
 watchFile = %A_ScriptDir%\..\postProcessors\postProcessNow
+hsmWorksSettingsScript = %A_ScriptDir%\..\..\..\milling\hsmworks_configuration\hsmWorksSettings.bat
 
-
+FileAppend, %A_ScriptName% started at %A_NOW%`n, %logFile%
 
 Loop{
 	If(FileExist(watchFile))
@@ -29,8 +29,15 @@ Loop{
 
 		;ControlSend, swCaption, ^+p, ahk_exe SLDWORKS.exe
 		;ControlSend, Tree Container Wnd, ^+p, ahk_exe SLDWORKS.exe
-				
+		
+		If(FileExist(hsmWorksSettingsScript))
+		{
+			RunWait "%hsmWorksSettingsScript%"
+		}
+		
 		WinActivate, ahk_exe SLDWORKS.exe
+		
+		
 		SendInput, ^+p
 		
 		FileAppend, %A_NOW% : %A_ScriptName% did its thing. `n, %logFile%
