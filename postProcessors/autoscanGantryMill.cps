@@ -255,7 +255,7 @@ function onOpen() {
   writeBlock(gAbsIncModal.format(90), "(position mode: absolute)");
 
   gFeedModeModal.reset(); //force output on next invocation on gFeedModeModal.format()
-  writeBlock(gFeedModeModal.format(94), "(feedrate mode: length per time");
+  writeBlock(gFeedModeModal.format(94), "(feedrate mode: length per time)");
 
   writeBlock(gFormat.format(91.1), "(arc center mode: incremental)");
 
