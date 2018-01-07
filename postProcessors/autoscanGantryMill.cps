@@ -490,6 +490,8 @@ function onSection() {
   writeBlock(sOutput.format(tool.spindleRPM), "(set spindle speed to " + tool.spindleRPM + " RPM)");
   onCommand(COMMAND_START_SPINDLE);
   
+  velocityBlendingModeModal.reset(); //force output on next invocation on velocityBlendingModeModal.format()
+  writeBlock(velocityBlendingModeModal.format(64), "(constant velocity mode)");
 
 
   // wcs
