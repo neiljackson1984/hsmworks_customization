@@ -266,7 +266,7 @@ function onOpen() {
   gPlaneModal.reset(); //force output on next invocation on gPlaneModal.format()
   writeBlock(gPlaneModal.format(17), "(plane for circular moves: XY plane)");
   
-  writeBlock(gFormat.format(4), "(cancel tool-length offset)");
+  writeBlock(gFormat.format(49), "(cancel tool-length offset)");
   
   velocityBlendingModeModal.reset(); //force output on next invocation on velocityBlendingModeModal.format()
   writeBlock(velocityBlendingModeModal.format(64), "(constant velocity mode)");
