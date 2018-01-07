@@ -115,6 +115,7 @@ var jOutput = createReferenceVariable({prefix:"J", force:true}, xyzFormat);
 var kOutput = createReferenceVariable({prefix:"K", force:true}, xyzFormat);
 
 var gMotionModal      = createModal({}, gFormat); // modal group 1 // G0-G3, ...
+var velocityBlendingModeModal      = createModal({}, gFormat); // G64 (constant velocity mode) or G61 (exact stop)
 var gPlaneModal       = createModal({onchange:function () {gMotionModal.reset();}}, gFormat); // modal group 2 // G17-19
 var gAbsIncModal      = createModal({}, gFormat); // modal group 3 // G90-91
 var gFeedModeModal    = createModal({}, gFormat); // modal group 5 // G93-94
@@ -263,7 +264,12 @@ function onOpen() {
   writeBlock(gFormat.format(49), "(cancel tool-length offset)");
 
   gPlaneModal.reset(); //force output on next invocation on gPlaneModal.format()
-  writeBlock(gPlaneModal.format(17), "(plane for circular moves: XY plane");
+  writeBlock(gPlaneModal.format(17), "(plane for circular moves: XY plane)");
+  
+  writeBlock(gFormat.format(4), "(cancel tool-length offset)");
+  
+  velocityBlendingModeModal.reset(); //force output on next invocation on velocityBlendingModeModal.format()
+  writeBlock(velocityBlendingModeModal.format(64), "(constant velocity mode)");
 
   switch (unit) {
      case IN:
